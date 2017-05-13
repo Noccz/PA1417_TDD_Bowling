@@ -30,27 +30,50 @@ public class Game {
         int nrOfStrikes = 0;
         for(int i = 0; i < frames.size(); i++) {
             if(isStrike(i) && i < 9){
-                totalScore += 10 + frames.get(i+1).getSum();
+                if(frames.size() < 10) {
+                    totalScore += 10;
+                } else {
+                    totalScore += 10 + frames.get(i + 1).getSum();
+                }
                 nrOfStrikes++;
                 strike = true;
             }
+            
             if(isStrike(i) && i == 9){
-                totalScore += frames.get(i).getSum() + frames.get(i).getArr(2);
+                if(frames.get(i).size() == 2) {
+                    totalScore += 10;
+                } else if(frames.get(i).size() == 3) {
+                    totalScore += frames.get(i).getSum() + frames.get(i).getArr(2);
+                }
                 strike = true;
             }
-            if(nrOfStrikes > 0 && i < 8){
+            
+            if(nrOfStrikes > 0 && i < 8 && frames.size() == 10){
                 if(frames.get(i+1).getArr(0) == 10) {
                     totalScore += frames.get(i + 2).getArr(0);
+                } else {
+                    nrOfStrikes = 0;
                 }
             }
+            
             if(isSpare(i) && i < 9){
-                totalScore += 10 + frames.get(i+1).getArr(0);
+                if(frames.size() < 10){
+                    totalScore += 10;
+                } else {
+                    totalScore += 10 + frames.get(i + 1).getArr(0);
+                }
                 spare = true;
             }
+            
             if(isSpare(i) && i == 9){
-                totalScore += 10 + frames.get(i).getArr(2);
+                if(frames.get(i).size() == 2) {
+                    totalScore += 10;
+                } else if(frames.get(i).size() == 3) {
+                    totalScore += 10 + frames.get(i).getArr(2);
+                }
                 spare = true;
             }
+            
             if(!strike && !spare) {
                 totalScore += frames.get(i).getSum();
             }

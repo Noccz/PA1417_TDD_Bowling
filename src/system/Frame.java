@@ -50,4 +50,8 @@ public class Frame {
     public int getSum(){
         return pins.get(0) + pins.get(1);
     }
+    
+    public int size(){
+        return pins.size();
+    }
 }
