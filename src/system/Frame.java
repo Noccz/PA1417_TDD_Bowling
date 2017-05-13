@@ -15,6 +15,12 @@ public class Frame {
             throw new RangeException((short) 1, "Invalid range");
         }
         
+        int sum = val1 + val2;
+        
+        if(sum > 10){
+            throw new RangeException((short) 1, "Invalid range");
+        }
+        
         this.pins = new ArrayList<>(2);
         this.pins.add(0, val1);
         this.pins.add(1, val2);
@@ -22,5 +28,9 @@ public class Frame {
     
     public int getArr(int pos){
         return this.pins.get(pos);
+    }
+    
+    public int getScore(){
+        return this.pins.get(0) + this.pins.get(1);
     }
 }

@@ -25,4 +25,23 @@ public class FrameTest {
         assertEquals(6, frame.getArr(1));
     }
     
+    @Test(expected = RangeException.class)
+    public void testConstructor_InvalidNegativeRange(){
+        new Frame(-10, -10);
+    }
+    
+    @Test(expected = RangeException.class)
+    public void testConstructor_InvalidPositiveRange(){
+        new Frame(40, 20);
+    }
+    
+    @Test(expected = RangeException.class)
+    public void testConstructor_BadValuesValidSum(){
+        new Frame(-20, 20);
+    }
+    
+    @Test
+    public void getScore_ValidValues(){
+        assertEquals(9, frame.getScore());
+    }
 }
