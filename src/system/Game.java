@@ -25,9 +25,21 @@ public class Game {
     
     public int getScore(){
         int totalScore = 0;
+        boolean strike = false;
         for(int i = 0; i < frames.size(); i++) {
-            totalScore += frames.get(i).getSum();
+            if(isStrike(i) && i < MAX_FRAMES){
+                totalScore += 10 + frames.get(i+1).getSum();
+                strike = true;
+            }
+            if(!strike) {
+                totalScore += frames.get(i).getSum();
+            }
+            strike = false;
         }
         return totalScore;
+    }
+    
+    public boolean isStrike(int pos){
+        return frames.get(pos).getArr(0) == 10;
     }
 }
