@@ -26,20 +26,39 @@ public class Game {
     public int getScore(){
         int totalScore = 0;
         boolean strike = false;
+        boolean spare = false;
         for(int i = 0; i < frames.size(); i++) {
-            if(isStrike(i) && i < MAX_FRAMES){
+            if(isStrike(i) && i != 9){
                 totalScore += 10 + frames.get(i+1).getSum();
                 strike = true;
             }
-            if(!strike) {
+            if(!strike && isSpare(i) && i != 9){
+                totalScore += 10 + frames.get(i+1).getArr(0);
+                spare = true;
+            }
+            if(!strike && !spare) {
                 totalScore += frames.get(i).getSum();
             }
             strike = false;
+            spare = false;
         }
         return totalScore;
     }
     
     public boolean isStrike(int pos){
         return frames.get(pos).getArr(0) == 10;
+    }
+    
+    public boolean isSpare(int pos){
+        boolean isSpare = false;
+        
+        if (frames.get(pos).getSum() == 10){
+            isSpare = true;
+        }
+        if(frames.get(pos).getArr(0) == 10){
+            isSpare = false;
+        }
+        
+        return isSpare;
     }
 }

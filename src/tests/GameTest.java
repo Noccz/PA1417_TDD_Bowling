@@ -64,4 +64,20 @@ public class GameTest {
     
         assertEquals(94, game.getScore());
     }
+    
+    @Test
+    public void getScore_RecognizeSpare(){
+        game.insertFrame(new Frame(1, 9));
+        game.insertFrame(new Frame(3, 6));
+        game.insertFrame(new Frame(7, 2));
+        game.insertFrame(new Frame(3, 6));
+        game.insertFrame(new Frame(4, 4));
+        game.insertFrame(new Frame(5, 3));
+        game.insertFrame(new Frame(3, 3));
+        game.insertFrame(new Frame(4, 5));
+        game.insertFrame(new Frame(8, 1));
+        game.insertFrame(new Frame(2, 6));
+    
+        assertEquals(88, game.getScore());
+    }
 }
