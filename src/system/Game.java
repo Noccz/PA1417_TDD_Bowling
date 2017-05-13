@@ -22,4 +22,12 @@ public class Game {
         }
         return success;
     }
+    
+    public int getScore(){
+        int totalScore = 0;
+        for(int i = 0; i < frames.size(); i++) {
+            totalScore += frames.get(i).getSum();
+        }
+        return totalScore;
+    }
 }

@@ -30,7 +30,7 @@ public class Frame {
         return pins.get(pos);
     }
     
-    public int getScore(){
+    public int getSum(){
         return pins.get(0) + pins.get(1);
     }
 }

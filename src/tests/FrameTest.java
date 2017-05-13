@@ -42,6 +42,6 @@ public class FrameTest {
     
     @Test
     public void getScore_ValidValues(){
-        assertEquals(9, frame.getScore());
+        assertEquals(9, frame.getSum());
     }
 }
