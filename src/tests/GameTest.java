@@ -80,4 +80,84 @@ public class GameTest {
     
         assertEquals(88, game.getScore());
     }
+    
+    @Test
+    public void getScore_StrikeFollowedBySpare(){
+        game.insertFrame(new Frame(10, 0));
+        game.insertFrame(new Frame(4, 6));
+        game.insertFrame(new Frame(7, 2));
+        game.insertFrame(new Frame(3, 6));
+        game.insertFrame(new Frame(4, 4));
+        game.insertFrame(new Frame(5, 3));
+        game.insertFrame(new Frame(3, 3));
+        game.insertFrame(new Frame(4, 5));
+        game.insertFrame(new Frame(8, 1));
+        game.insertFrame(new Frame(2, 6));
+    
+        assertEquals(103, game.getScore());
+    }
+    
+    @Test
+    public void getScore_StrikeFollowedByAnotherStrike(){
+        game.insertFrame(new Frame(10, 0));
+        game.insertFrame(new Frame(10, 0));
+        game.insertFrame(new Frame(7, 2));
+        game.insertFrame(new Frame(3, 6));
+        game.insertFrame(new Frame(4, 4));
+        game.insertFrame(new Frame(5, 3));
+        game.insertFrame(new Frame(3, 3));
+        game.insertFrame(new Frame(4, 5));
+        game.insertFrame(new Frame(8, 1));
+        game.insertFrame(new Frame(2, 6));
+        
+        assertEquals(112, game.getScore());
+    }
+    
+    @Test
+    public void getScore_SpareFollowedByAnotherSpare(){
+        game.insertFrame(new Frame(8, 2));
+        game.insertFrame(new Frame(5, 5));
+        game.insertFrame(new Frame(7, 2));
+        game.insertFrame(new Frame(3, 6));
+        game.insertFrame(new Frame(4, 4));
+        game.insertFrame(new Frame(5, 3));
+        game.insertFrame(new Frame(3, 3));
+        game.insertFrame(new Frame(4, 5));
+        game.insertFrame(new Frame(8, 1));
+        game.insertFrame(new Frame(2, 6));
+        
+        assertEquals(98, game.getScore());
+    }
+    
+    @Test
+    public void getScore_SpareAsLastFrame(){
+        game.insertFrame(new Frame(1, 5));
+        game.insertFrame(new Frame(3, 6));
+        game.insertFrame(new Frame(7, 2));
+        game.insertFrame(new Frame(3, 6));
+        game.insertFrame(new Frame(4, 4));
+        game.insertFrame(new Frame(5, 3));
+        game.insertFrame(new Frame(3, 3));
+        game.insertFrame(new Frame(4, 5));
+        game.insertFrame(new Frame(8, 1));
+        game.insertFrame(new Frame(2, 8, 7));
+        
+        assertEquals(90, game.getScore());
+    }
+    
+    @Test
+    public void getScore_StrikeAsLastFrame(){
+        game.insertFrame(new Frame(1, 5));
+        game.insertFrame(new Frame(3, 6));
+        game.insertFrame(new Frame(7, 2));
+        game.insertFrame(new Frame(3, 6));
+        game.insertFrame(new Frame(4, 4));
+        game.insertFrame(new Frame(5, 3));
+        game.insertFrame(new Frame(3, 3));
+        game.insertFrame(new Frame(4, 5));
+        game.insertFrame(new Frame(8, 1));
+        game.insertFrame(new Frame(10, 7, 2));
+        
+        assertEquals(92, game.getScore());
+    }
 }
