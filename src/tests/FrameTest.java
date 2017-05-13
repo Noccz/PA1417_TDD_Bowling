@@ -16,7 +16,7 @@ public class FrameTest {
     
     @Before
     public void setup(){
-        this.frame = new Frame(3, 6);
+        frame = new Frame(3, 6);
     }
     
     @Test

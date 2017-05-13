@@ -21,16 +21,16 @@ public class Frame {
             throw new RangeException((short) 1, "Invalid range");
         }
         
-        this.pins = new ArrayList<>(2);
-        this.pins.add(0, val1);
-        this.pins.add(1, val2);
+        pins = new ArrayList<>(2);
+        pins.add(0, val1);
+        pins.add(1, val2);
     }
     
     public int getArr(int pos){
-        return this.pins.get(pos);
+        return pins.get(pos);
     }
     
     public int getScore(){
-        return this.pins.get(0) + this.pins.get(1);
+        return pins.get(0) + pins.get(1);
     }
 }
